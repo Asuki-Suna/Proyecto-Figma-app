@@ -1,3 +1,12 @@
+.container-external{
+    position: sticky;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+
 #barra{
     background-color: black;
     display: flex;
@@ -11,13 +20,10 @@
     display: inline-block;
     padding-left: 5px; 
   padding-right: 5px;
-  border-left: 1px solid white;
-  border-right: 1px solid white;
 }
 
 #buttonDesplegable{
     background-color: var(--background);
-    border: 1px solid white;
     width: 33%;
     cursor: pointer;
 }
@@ -30,13 +36,12 @@
     justify-content: center;
     align-items: center;
     display: flex;
-    background-color: aquamarine;
+    background-color: #414AFA;
     width: 33%;
 }
 
 h3{
     color: white;
-    margin: 10px;
 }
 
 #barraInferior{
@@ -47,7 +52,6 @@ h3{
     border: 1px solid white;
     width: 100%;
 }
-
 
 #barraInferior>div{
 width: 25%;
@@ -75,14 +79,93 @@ text-align: center;
 
 
 #barraInferJuegos{
-    background-color: rgb(46, 46, 46);
+    background-color: #2e2e2e;
     display: flex;
 }
 
-#barraInferJuegos li{
-    display: inline-block;
+#barraInferJuegos > div{
+    border: 1px solid white;
+    width: 50%;
+    text-align: center;
+}
+
+#barraInferJuegos h3{
      margin-left: 5px;
     margin-right: 5px;
+}
+/* --------------------------- */
 
-  border: 1px solid white;
+#body{
+    background-color: var(--backgroundbody);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 90%;
+    width: 100%;
+}
+
+#body p{
+    margin-top: 1;
+    color: var(--colorleter);
+ 
+ }
+
+ .input-container{
+    margin: 10px;
+ }
+
+ #search p{
+    margin: 7px;
+ }
+
+/* --------------------------- */
+#footer{
+    display: flex;
+    justify-content: space-between;
+    background: #303030;
+    text-align: center;
+}
+
+#contact{
+    background: #303030;
+    width: 20%;
+    text-align: left;
+    
+}
+
+#contact p{
+    background-color: #C72234;
+    color: #ffffff;
+    display: inline-block;
+    justify-content: center;
+    text-align: center;
+    margin-top: 25px;
+    font-size: large;
+    width: 110%;
+    height: 30%;
+    cursor: pointer;
+}
+
+#buttonDark > img{
+    width: 40%;
+    justify-content: center;
+    text-align: center;
+    float: right;
+    background-color: var(--backgroundbuttonbot);
+}
+
+#buttonLight > img{
+    width: 40%;
+    justify-content: center;
+    text-align: center;
+    float: right;
+    background-color: var(--backgroundbuttonbot);
+}
+
+#footer > div{
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

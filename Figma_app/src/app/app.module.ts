@@ -8,6 +8,7 @@ import { ContactanosComponent } from './contactanos/contactanos.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { JuegosComponent } from './juegos/juegos.component';
+import { CardsComponent } from './components/cards/cards.component';
 // import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
@@ -18,6 +19,7 @@ import { JuegosComponent } from './juegos/juegos.component';
     LoginComponent,
     ContactanosComponent,
     JuegosComponent,
+    CardsComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,22 @@
+{
+    "games":[
+{
+    "card.image":"",
+    "card.name":"Forza Horizon 5",
+    "card.description":"Juego de carreras en mundo abierto",
+    "card.price":"59,99"
+},
+{
+    "card.image":"",
+    "card.name":"Halo 1",
+    "card.description":"Juego de accion espacial",
+    "card.price":"19,99"
+},
+{
+    "card.image":"",
+    "card.name":"Halo 3",
+    "card.description":"Conclusion de la mitica saga",
+    "card.price":"39,99"
+}
+]
+}

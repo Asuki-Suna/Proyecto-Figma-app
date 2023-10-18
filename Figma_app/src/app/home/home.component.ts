@@ -2,28 +2,21 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { JsonService } from '../shared/services/json.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
-  // animations: [
-  //   trigger('movedown',[
-  //     state('void', style({transform: 'translateY(0'})),
-  //     state('*', style({transform: 'translateY(250%'})),
-  //     transition('void <=> *', animate('300ms ease-in-out'))
-  //   ])
-  // ]
 })
 export class HomeComponent implements OnInit {
 
-  color1= '#0CBEED';
-  color2= '#5f5f5f';
+  jsonData: any;
 
   public miToken: number;
   public userName: string | null;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private jsonService: JsonService) {
     this.miToken = 0;
     this.userName = "";
   }
@@ -31,6 +24,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.changeColor()
     this.changeColorII()
+    this.getall()
     if (localStorage.getItem('personalToken')) {
       this.miToken = +localStorage.getItem('personalToken')!;
       document.documentElement.style.setProperty('--background2', '#C72234');
@@ -51,31 +45,27 @@ export class HomeComponent implements OnInit {
       showCancelButton: true,
       showCloseButton: true,
       preConfirm: (login) => {
-      
+
       },
       allowOutsideClick: () => !Swal.isLoading()
-      }).then((result) => {
-        if (result.isConfirmed) {
+    }).then((result) => {
+      if (result.isConfirmed) {
 
-    if (localStorage.getItem('personalToken')) {
-      localStorage.removeItem('personalToken');
-      this.changeColorII();
-    }
-    window.location.reload();
+        if (localStorage.getItem('personalToken')) {
+          localStorage.removeItem('personalToken');
+          this.changeColorII();
+        }
+        window.location.reload();
 
-    Swal.fire('Proceso terminado. Logout OK')
+        Swal.fire('Proceso terminado. Logout OK')
+      }
+    }) // fin de pregunta estas seguro?
+
   }
-  }) // fin de pregunta estas seguro?
-  
-  }
-
 
   title = 'Figma_app';
-
   mostrarDiv: boolean = false;
-
   light: boolean = true;
-
 
   toggleDiv() {
     this.mostrarDiv = !this.mostrarDiv;
@@ -88,15 +78,24 @@ export class HomeComponent implements OnInit {
 
   nocturne() {
     this.light = !this.light;
-    if (this.light){
+    if (this.light) {
       document.documentElement.style.setProperty('--backgroundbody', '#0CBEED')
       document.documentElement.style.setProperty('--backgroundbuttonbot', '#5f5f5f')
       document.documentElement.style.setProperty('--colorleter', '#000000')
-    } else{
+      document.documentElement.style.setProperty('--colorcard', '#ffffff')
+      document.documentElement.style.setProperty('--cardleter', '#000000')
+    } else {
       document.documentElement.style.setProperty('--backgroundbody', '#5f5f5f')
       document.documentElement.style.setProperty('--backgroundbuttonbot', '#DBD204')
       document.documentElement.style.setProperty('--colorleter', '#ffffff')
+      document.documentElement.style.setProperty('--colorcard', '#000000')
+      document.documentElement.style.setProperty('--cardleter', '#ffffff')
     }
+  }
+
+  getall() {
+    this.jsonData = this.jsonService.getJsonData();
+    console.log(this.jsonData)
   }
 
   irContacto() {

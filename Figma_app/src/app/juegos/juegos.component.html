@@ -1,5 +1,6 @@
-<p>juegos works!</p>
-<div id="barra">
+<div class="container-external">
+
+  <div id="barra">
     <div id="buttonDesplegable" (click)="toggleDiv()">
       <img src="../../assets/images/icons/desplegable.svg">
     </div>
@@ -10,7 +11,7 @@
       <p>Videojuegos Roque Nublo</p>
     </div>
   </div>
-  
+
   <div *ngIf="mostrarDiv" id="barraInferior">
     <div routerLink="/juegos" id="Juegos">
       <img src="../../assets/images/icons/gamepad.svg">
@@ -25,14 +26,52 @@
     <div id="Login">
       <img src="../../assets/images/icons/user.svg">
       <p id="acceso" *ngIf="miToken==0" class="acceso" routerLink="/login">Iniciar sesion</p>
-      <p i id="acceso" *ngIf="miToken != 0" class="acceso" (click)="logout()"><strong>Usuario</strong> {{userName}}</p>
+      <p i id="acceso" *ngIf="miToken != 0" class="acceso" (click)="logout()"><strong>Usuario</strong> {{userName}} <img
+          src="../../assets/images/logout-dos.png" width="25"></p>
     </div>
   </div>
 
-  
+  <!-- -------------------------------------------------------  -->
   <div id="barraInferJuegos">
-    <ul>
-    <li><h3>Proximamente</h3></li>
-    <li><h3>Ofertas</h3></li>
-  </ul>
+    <div>
+      <h3>Proximamente</h3>
+    </div>
+    <div>
+      <h3>Ofertas</h3>
+    </div>
   </div>
+
+  <!-- -------------------------------------------------------  -->
+
+  <div id="body">
+    <p>Buscador</p>
+    <section class="finder-container">
+      <div class="input-container">
+        <input type="text" placeholder="Buscar" id="finder" [(ngModel)]="searcher" />
+      </div>
+    </section>
+
+    <section class="searches-container">
+      <div id="search" *ngFor="let prod of filterProducts()">
+        <img src="../../assets/images/{{prod.image}}">
+        <p>{{prod.name}}</p>
+        <p>{{prod.price}}€</p>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- -------------------------------------------------------  -->
+  <div id="footer">
+    <!-- (click)="irContacto() -->
+    <div routerLink="/contact" id="contact">
+      <p>Contactanos</p>
+    </div>
+    <div *ngIf="!light" (click)="nocturne()" id="buttonDark">
+      <img src="../../assets/images/icons/darkmode.svg">
+    </div>
+    <div *ngIf="light" (click)="nocturne()" id="buttonLight">
+      <img src="../../assets/images/icons/darkmode.svg">
+    </div>
+  </div>
+</div>
