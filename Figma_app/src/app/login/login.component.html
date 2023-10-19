@@ -1,20 +1,67 @@
-<div id="contenedor" class="form">
-    <form (ngSubmit)="submit()" #userForm="ngForm">
-    <div class="form-group">
-    <label for="user">Nombre:</label>
-    <input type="text" [(ngModel)]="user.name"
-    name="name" #name="ngModel" required>
-    <div *ngIf="name.invalid && name.dirty" class="alert">
-    <div *ngIf="name.errors?.['required']">Campo requerido</div>
-    </div> </div>
-    <div class="form-group">
-    <label for="password">Contraseña:</label>
-    <input type="password" [(ngModel)]="user.password"
-    name="password" #password="ngModel" required minlength="4">
-    <div *ngIf="password.invalid && password.dirty" class="alert">
-    <div *ngIf="password .errors?.['required']">Campo requerido</div>
-    <div *ngIf="password .errors?.['minlength']">Mínimo 4 caracteres</div>
+<div class="back-all">
+    <div id="barra">
+        <div id="buttonDesplegable" (click)="toggleDiv()">
+          <img src="../../assets/images/icons/desplegable.svg">
+        </div>
+        <div routerLink="/home" id="logo">
+          <img src="../../assets/images/icons/logo.svg" width="100%">
+        </div>
+        <div id="empresa">
+          <p>Videojuegos Roque Nublo</p>
+        </div>
+      </div>
+    
+      <div *ngIf="mostrarDiv" id="barraInferior">
+        <div routerLink="/juegos" id="Juegos">
+          <img src="../../assets/images/icons/gamepad.svg">
+          <p>Juegos</p>
+        </div>
+        <div id="Cesta">
+          <p>Cesta</p>
+        </div>
+        <div id="Cuenta">
+          <p>Cuenta</p>
+        </div>
+        <div id="Login">
+          <img src="../../assets/images/icons/user.svg">
+          <p id="acceso" *ngIf="miToken==0" class="acceso" routerLink="/login">Iniciar sesion</p>
+          <p i id="acceso" *ngIf="miToken != 0" class="acceso" (click)="logout()"><strong>Usuario</strong> {{userName}} <img
+              src="../../assets/images/logout-dos.png" width="25"></p>
+        </div>
+      </div>
+      <div class="back">
+    <div id="contenedor" class="form">
+        <form (ngSubmit)="submit()" #userForm="ngForm">
+            <div class="form-group">
+                <label for="user">Nombre:</label>
+                <input type="text" [(ngModel)]="user.name" name="name" #name="ngModel" required>
+                <div *ngIf="name.invalid && name.dirty" class="alert">
+                    <div *ngIf="name.errors?.['required']">Campo requerido</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">Contraseña:</label>
+                <input type="password" [(ngModel)]="user.password" name="password" #password="ngModel" required
+                    minlength="4">
+                <div *ngIf="password.invalid && password.dirty" class="alert">
+                    <div *ngIf="password .errors?.['required']">Campo requerido</div>
+                    <div *ngIf="password .errors?.['minlength']">Mínimo 4 caracteres</div>
+                </div>
+            </div>
+            <button type="submit" [disabled]="!userForm .form.valid">Entrar</button>
+        </form>
     </div>
-    </div>
-    <button type="submit" [disabled]="!userForm .form.valid">Entrar</button>
- </form> </div>
+</div>
+
+    <div id="footer">
+        <div routerLink="/home" id="contact">
+          <p>Volver</p>
+        </div>
+        <div *ngIf="!light" (click)="nocturne()" id="buttonDark">
+          <img src="../../assets/images/icons/darkmode.svg">
+        </div>
+        <div *ngIf="light" (click)="nocturne()" id="buttonLight">
+          <img src="../../assets/images/icons/darkmode.svg">
+        </div>
+      </div>
+</div>
